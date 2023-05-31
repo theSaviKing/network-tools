@@ -103,7 +103,6 @@ class SiteConfiguration:
                 current_commands = []
                 current_identifier = None
 
-        # Check if there are any remaining commands after the last empty line
         if current_identifier is not None:
             config = Config(current_identifier, current_commands)
             self.configs.append(config)

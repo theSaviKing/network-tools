@@ -53,9 +53,6 @@ def main():
 
     print(f"Access points to be configured: {configurations.get_range_string()}")
 
-    ################################################################################
-    # Consecutively configure APs by looping through config
-
     from pexpect.popen_spawn import PopenSpawn as ps
     from sys import stdout
     from time import sleep

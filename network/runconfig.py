@@ -31,10 +31,10 @@ def run_configurations(
                 found = True
             elif not found:
                 continue
-            # Expect prompt to stop autoboot; send "ENTER" (newline)
+
             shell.expect(".*\n*Hit <[Ee][Nn][Tt][Ee][Rr]>.*\n*")
             shell.sendline("\n\n")
-            # Expect AP shell prompt; send provisioning commands.
+
             for command in config.commands:
                 shell.expect("apboot>.*")
                 shell.sendline(command)

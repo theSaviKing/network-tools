@@ -10,9 +10,9 @@ from network.site_config import SiteConfiguration
 term = Terminal()
 
 choices = [
-    "Provision access points",  # 0
-    "Check for gaps in config file",  # 1
-    "Experiment with SiteConfiguration object from file",  # 2
+    "Provision access points",
+    "Check for gaps in config file",
+    "Experiment with SiteConfiguration object from file",
 ]
 
 
@@ -59,10 +59,6 @@ if __name__ == "__main__":
                     experiment()
                 case _:
                     break
-        # with contextlib.suppress(ValueError):
-        #     if input("\n\nContinue? ('q' to quit, ENTER to continue):  ") == "q":
-        #         print(term.clear, term.home)
-        #         break
         with contextlib.suppress(ValueError):
             print("\n\nContinue? ('q' to quit, anything else to return):  ", end="")
             with term.cbreak():

@@ -25,32 +25,28 @@ def generate_range_string(numbers: Iterable[int], check_gaps: bool = False):
     Example::
         numbers = [1, 2, 3, 4, 5, 7, 8, 9, 12, 13, 14, 15]
         range_string = generate_range_string(numbers)
-        print(range_string)  # Output: "1-5, 7-9, 12-15"
+        print(range_string)
         range_string = generate_range_string(numbers, check_gaps=True)
-        print(range_string)  # Output: ("1-5, 7-9, 12-15", "6, 10-11")
+        print(range_string)
     """
     numbers = sorted(numbers)
-    ranges = []  # List to store the start and end values of each range
+    ranges = []
     if numbers:
         gaps = [i for i in range(min(numbers), max(numbers)) if i not in numbers]
     else:
         gaps = []
-    start = None  # Variable to track the start value of a range
+    start = None
 
-    # Iterate over the numbers
     for num in numbers:
         if start is None:
             start = num
         elif num != numbers[numbers.index(num) - 1] + 1:
-            # Non-consecutive number encountered, add range to the list
             ranges.append((start, numbers[numbers.index(num) - 1]))
             start = num
 
-    # Check if there is a pending range and add it to the list
     if start is not None:
         ranges.append((start, numbers[-1]))
 
-    # Returns the range string by formatting the range list
     range_string = ", ".join(
         [str(start) if start == end else f"{start}-{end}" for start, end in ranges]
     )
