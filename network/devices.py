@@ -11,6 +11,7 @@ from typing import NoReturn
 from deepdiff import DeepDiff as DD
 from datetime import datetime
 from blessed import Terminal
+from .__utils__ import clear_screen
 
 term = Terminal()
 
@@ -57,7 +58,7 @@ def watch(limit: int = 0) -> NoReturn:
     Args:
         limit (int, optional): Number of times to check output of "mode" command for changes. Defaults to 0.
     """
-    print(term.home, term.clear)
+    clear_screen()
     print("Watching for USB devices")
     new_devs = filter_devices()
     print("\nCurrent devices: ", end=" ")

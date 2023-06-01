@@ -6,6 +6,8 @@ from network.site_config import SiteConfiguration
 
 term = Terminal()
 
+clear_screen = lambda: print(term.clear, term.home, end="", flush=True)
+
 
 @cached(LFUCache(maxsize=32))
 def is_valid_config_file(filename: str):
@@ -35,9 +37,8 @@ def find_valid_config_files():
                 if is_valid_config_file(file_path):
                     valid_files.append(file_path)
     valid = "\n".join(valid_files)
+    clear_screen()
     print(
-        term.clear,
-        term.home,
         term.salmon1(
             "\n"
             + (
