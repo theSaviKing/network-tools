@@ -1,7 +1,6 @@
 import os
 from blessed import Terminal
-from cachetools import cached, LFUCache
-
+from functools import cache
 from network.site_config import SiteConfiguration
 
 term = Terminal()
@@ -9,7 +8,7 @@ term = Terminal()
 clear_screen = lambda: print(term.clear, term.home, end="", flush=True)
 
 
-@cached(LFUCache(maxsize=32))
+@cache
 def is_valid_config_file(filename: str):
     try:
         SiteConfiguration(filename)
