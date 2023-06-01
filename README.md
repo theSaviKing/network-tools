@@ -21,7 +21,7 @@ If you get an error and you know Python was installed on your machine, try resta
 
 ### Installing `network-tools`
 To install the network-tools package, follow these steps:
-1. Navigate to the network-tools repository :white_check_mark:
+1. Navigate to the network-tools repository (:white_check_mark:)
 
 ### Installing required packages
 There are specific Python packages that are required in order for network-tools to run correctly. You can easily install all the required packages at once.
