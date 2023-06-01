@@ -1,11 +1,13 @@
 import os
 from blessed import Terminal
+from cachetools import cached, LFUCache
 
 from network.site_config import SiteConfiguration
 
 term = Terminal()
 
 
+@cached(LFUCache(maxsize=32))
 def is_valid_config_file(filename: str):
     try:
         SiteConfiguration(filename)
