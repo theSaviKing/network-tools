@@ -56,6 +56,7 @@ network-tools-main/
 ### Using network tools
 
 Currently, here are all the functions available with ***network-tools***:
-- [ ] Provisioning access points
-- [ ] Checking for gaps in config files
-- [ ] Experimenting with a Python object holding a config file
+- [x] Provisioning access points
+- [x] Checking for gaps in config files
+- [x] Experimenting with a Python object holding a config file
+- [ ] Generating AP SN/MAC spreadsheet
