@@ -9,7 +9,6 @@
 - [About this module](#about-this-module)
   - [Available functionality](#available-functionality)
 - [Using `network-tools`](#using-network-tools)
-  - [~~Generating AP SN/MAC spreadsheet~~](#generating-ap-snmac-spreadsheet)
 
 
 ## Requirements
@@ -71,7 +70,7 @@ Currently, all the *checked* functions are available with ***network-tools***:
 - [x] Provisioning access points
 - [x] Checking for gaps in config files
 - [x] Experimenting with a Python object holding a config file
-- [ ] Generating AP SN/MAC spreadsheet
+- [ ] Generating AP SN/MAC spreadsheet template
 - [ ] Merge fragmented SN/MAC spreadsheets
 
 ---
@@ -109,5 +108,3 @@ When you provision access points using `network-tools`, a [`SiteConfiguration`](
 
 To experiment with a `SiteConfiguration` object and its methods, choose option 3, and follow the prompts to access an interactive Python terminal with a pre-loaded object.
 </details>
-
-### ~~Generating AP SN/MAC spreadsheet~~
