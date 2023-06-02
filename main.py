@@ -1,12 +1,15 @@
 """Main entry point for Network Tools"""
 
-import code, consolemenu, contextlib
-
-from blessed import Terminal
-
-from network.site_config import SiteConfiguration
-from network.__utils__ import clear_screen
-
+try:
+    import consolemenu
+    from contextlib import suppress
+    from blessed import Terminal
+    from network.__utils__ import clear_screen
+except ModuleNotFoundError:
+    print(
+        "\nYou do not have some of the required modules to run this program. Please install them using this command:  pip install -r requirements.txt\n"
+    )
+    exit()
 
 term = Terminal()
 
@@ -26,6 +29,7 @@ prompt_args = lambda: consolemenu.SelectionMenu.get_selection(
 
 def config_file_check():
     from network.__utils__ import get_config_filename
+    from network.site_config import SiteConfiguration
 
     cont = True
     while cont:
@@ -34,13 +38,21 @@ def config_file_check():
         print(f"\nIncluded configs:\t{rng}\nGaps in configs:\t{gaps or 'None'}")
         with term.cbreak():
             print("\n\nCheck another file? [y/N]:  ", end="", flush=True)
-            cont = (key := term.inkey()) not in ["n", "no", ""]
-            print(key)
+            cont = (key := str(term.inkey()).lower()) not in [
+                "n",
+                "no",
+                "\r",
+                "\n",
+                "",
+                " ",
+            ]
         clear_screen()
 
 
 def experiment():
     from network.__utils__ import get_config_filename, clear_screen
+    from network.site_config import SiteConfiguration
+    import code
 
     def console_exit():
         raise SystemExit
@@ -57,7 +69,7 @@ def experiment():
 
 if __name__ == "__main__":
     while True:
-        with contextlib.suppress(BaseException):
+        with suppress(BaseException):
             match prompt_args():
                 case 0:
                     from network import provision
@@ -69,7 +81,7 @@ if __name__ == "__main__":
                     experiment()
                 case _:
                     break
-        with contextlib.suppress(ValueError):
+        with suppress(ValueError):
             print(
                 "\n\nContinue? ('q' to quit program, anything else to return):  ",
                 end="",

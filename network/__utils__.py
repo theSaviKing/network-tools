@@ -19,7 +19,7 @@ def is_valid_config_file(filename: str):
 
 
 def find_valid_config_files():
-    while not os.path.exists(
+    while not os.path.isdir(
         directory := input(
             term.clear_eos
             + term.salmon(
