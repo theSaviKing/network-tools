@@ -32,10 +32,10 @@ If you get an error and you know Python was installed on your machine, try resta
 
 ### Installing `network-tools`
 To install the network-tools package, follow these steps:
-1. Navigate to the network-tools repository :white_check_mark:
-2. Open the dropdown from the ![Green button labeled Code with angle brackets and a dropdown arrow](./pics/codebtn.png) button.
-3. In the dropdown menu, click "**Download ZIP**"<br>![Dropdown menu with multiple options](./pics/codedd.png)
-4. Extract the new ZIP file to a location. Remember it.
+- [x] Navigate to the network-tools repository. (Congrats! You made it!)
+- [ ] Open the dropdown from the ![Green button labeled Code with angle brackets and a dropdown arrow](./pics/codebtn.png) button.
+- [ ] In the dropdown menu, click "**Download ZIP**"<br>![Dropdown menu with multiple options](./pics/codedd.png)
+- [ ] Extract the new ZIP file to a location. Remember it.
 
 ### Installing required packages
 There are specific Python packages that are required in order for network-tools to run correctly. You can easily install all the required packages at once.
