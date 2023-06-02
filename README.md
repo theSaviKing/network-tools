@@ -89,7 +89,7 @@ Open each dropdown to get information on that specific function.
 <details open>
 <summary>
 
-### Provisioning access points
+### <span style="color:coral">Provisioning access points</span>
 </summary>
 To provision access points, you will need:
 
