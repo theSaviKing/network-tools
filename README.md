@@ -1,7 +1,18 @@
-# network-tools
+# network-tools <!-- omit from toc -->
 ***A tiny suite of tools for the PHS Network Team***
 
-## Requirements:
+- [Requirements](#requirements)
+- [Getting started](#getting-started)
+  - [Checking Python installation](#checking-python-installation)
+  - [Installing `network-tools`](#installing-network-tools)
+  - [Installing required packages](#installing-required-packages)
+- [About this module](#about-this-module)
+  - [Available functionality](#available-functionality)
+- [Using `network-tools`](#using-network-tools)
+  - [~~Generating AP SN/MAC spreadsheet~~](#generating-ap-snmac-spreadsheet)
+
+
+## Requirements
 A valid Python installation (options: Microsoft Store, [Python website](https://www.python.org/downloads/))
 
 ## Getting started
@@ -43,20 +54,60 @@ network-tools-main/
 ├── README.md
 ├── main.py
 ├── requirements.txt
-└── network/
-    ├── __init__.py
-    ├── __utils__.py
-    ├── devices.py
-    ├── provision.py
-    ├── range_string.py
-    ├── runconfig.py
-    └── site_config.py
+├── network/
+│   ├── __init__.py
+│   ├── __utils__.py
+│   ├── devices.py
+│   ├── provision.py
+│   ├── range_string.py
+│   ├── runconfig.py
+│   └── site_config.py
+└── pics/
+    └── (images for README.md file)
 ```
 
-### Using network tools
-
-Currently, here are all the functions available with ***network-tools***:
+### Available functionality
+Currently, all the *checked* functions are available with ***network-tools***:
 - [x] Provisioning access points
 - [x] Checking for gaps in config files
 - [x] Experimenting with a Python object holding a config file
 - [ ] Generating AP SN/MAC spreadsheet
+- [ ] Merge fragmented SN/MAC spreadsheets
+
+---
+
+## Using `network-tools`
+
+*****Before using any of the functions:***
+1. Open a terminal in the `network-tools-main` folder.
+2. Run `python main.py`
+
+<details open>
+<summary><h3>Provisioning access points</h3></summary>
+To provision access points, you will need:
+
+- A valid config file
+    - The path to the file
+- A microUSB cable
+- A Power-over-Ethernet cable
+
+When you run `main.py`, choose option 1 and follow the prompts.
+</details>
+
+<details>
+    <summary><h3>Checking for config gaps</summary>
+
+To check for gaps in a config file, all you need is the path to the file to be checked.
+
+Run `main.py`, choose option 2, and follow the prompts.
+</details>
+
+<details>
+    <summary><h3>Experimenting with Python</summary>
+
+When you provision access points using `network-tools`, a [`SiteConfiguration`](https://github.com/theSaviKing/network-tools/blob/d2b626c3c166832a68875db1b763d1f75f89babf/network/site_config.py#L21-L108) object is created. During creation, the specified config file gets parsed and every block of config commands is broken down, split up into a list, and then added to a bigger list with all of the other config blocks. From there, the bigger list is looped during execution and each individual command is fed to the terminal on the access point by way of serial connection.
+
+To experiment with a `SiteConfiguration` object and its methods, choose option 3, and follow the prompts to access an interactive Python terminal with a pre-loaded object.
+</details>
+
+### ~~Generating AP SN/MAC spreadsheet~~
