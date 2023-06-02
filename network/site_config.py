@@ -33,7 +33,16 @@ class Config:
 
 class SiteConfiguration:
     """
-    Creates an object that can parse through a config file, generate a readable list of APs included in a config file (`get_range_string`), and store configs for multiple different access points
+    Represents a site configuration for access points (APs).
+
+    The `SiteConfiguration` class stores and manages configuration commands for each access point in a site.
+    It allows loading configuration data from a file and provides methods to access and manipulate the configurations.
+
+    Args:
+        filename (str): The name of the file containing the site configuration.
+
+    Attributes:
+        configs (list): A list of `Config` objects representing the configurations for each access point.
     """
 
     configs: list[Config]
