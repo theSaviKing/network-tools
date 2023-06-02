@@ -1,11 +1,3 @@
-"""Contains a few functions to get information on USB connections to device
-
-Functions:
-- `get_result`: returns result of `mode` command that list currently connected devices
-- `filter_devices`: returns dictionary of currently connected devices
-- `watch`: watches for changes in connected devices
-"""
-
 import subprocess, re
 from typing import NoReturn
 from deepdiff import DeepDiff as DD
@@ -17,10 +9,11 @@ term = Terminal()
 
 
 def get_result():
-    """Runs `mode` command in Powershell to get information on currently connected USB devices
+    """
+    Runs the `mode` command in PowerShell to get information on currently connected USB devices.
 
     Returns:
-        res (str): List of connected USB devices and their properties
+        str: List of connected USB devices and their properties.
     """
     return (
         subprocess.run(["mode"], stdout=subprocess.PIPE, shell=True)
@@ -30,10 +23,11 @@ def get_result():
 
 
 def filter_devices():
-    """Parses through `mode` command output (using `get_result`) and outputs dict of USB devices and their information
+    """
+    Parses the output of the `mode` command (using `get_result`) and returns a dictionary of USB devices and their information.
 
     Returns:
-        output (dict): USB devices and their corresponding properties
+        dict: USB devices and their corresponding properties.
     """
     mode_input = get_result().splitlines()
     output = {}
@@ -53,10 +47,12 @@ def filter_devices():
 
 
 def watch(limit: int = 0) -> NoReturn:
-    """Continuously monitors USB devices connected to device, using "mode" command, and outputs observed changes. If limit != 0, runs "mode" command that amount of times instead of indefinitely.
+    """
+    Continuously monitors USB devices connected to the device using the "mode" command and outputs observed changes.
+    If the limit parameter is provided, it runs the "mode" command that amount of times instead of indefinitely.
 
     Args:
-        limit (int, optional): Number of times to check output of "mode" command for changes. Defaults to 0.
+        limit (int, optional): Number of times to check the output of the "mode" command for changes. Defaults to 0.
     """
     clear_screen()
     print("Watching for USB devices")

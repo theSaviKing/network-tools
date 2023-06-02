@@ -10,6 +10,12 @@ term = Terminal()
 
 
 def get_usb_port():
+    """
+    Prompt the user to enter the name of the port with USB connection to APs and validate its existence.
+
+    Returns:
+        str: The name of the USB port.
+    """
     while (port := input("Enter name of port with USB connection to APs:\t\t")) not in (
         devs := filter_devices()
     ):
@@ -23,6 +29,12 @@ def get_usb_port():
 
 
 def input_arguments():
+    """
+    Prompt the user to enter input arguments and validate them.
+
+    Returns:
+        argparse.Namespace: The parsed input arguments.
+    """
     result = argparse.Namespace()
 
     global configurations
@@ -45,6 +57,11 @@ def input_arguments():
 
 
 def main():
+    """
+    The main function that orchestrates the AP configuration process.
+
+    It imports necessary modules and functions, collects user input arguments, establishes a shell connection to the access point console, and runs the configuration process using the `run_configurations` function.
+    """
     print("Importing modules and functions...", flush=True)
 
     print(term.move_up, term.clear_eol, end="", sep="")

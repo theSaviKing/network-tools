@@ -10,6 +10,15 @@ clear_screen = lambda: print(term.clear, term.home, end="", flush=True)
 
 @cache
 def is_valid_config_file(filename: str):
+    """
+    Checks if the specified file is a valid configuration file.
+
+    Args:
+        filename (str): The name of the file to check.
+
+    Returns:
+        bool: True if the file is a valid configuration file, False otherwise.
+    """
     try:
         SiteConfiguration(filename)
     except Exception:
@@ -19,6 +28,9 @@ def is_valid_config_file(filename: str):
 
 
 def find_valid_config_files():
+    """
+    Finds and displays the valid configuration files in a specified directory.
+    """
     while not os.path.isdir(
         directory := input(
             term.clear_eos
@@ -54,6 +66,15 @@ def find_valid_config_files():
 def get_config_filename(
     prompt: str = "Enter filename containing all configs for the APs (leave blank to search for valid config files):",
 ):
+    """
+    Prompts the user to enter the filename of the configuration file or searches for valid config files.
+
+    Args:
+        prompt (str, optional): The prompt to display. Defaults to "Enter filename containing all configs for the APs (leave blank to search for valid config files):".
+
+    Returns:
+        str: The name of the configuration file.
+    """
     while (
         not_file := not os.path.isfile((file := input(prompt.strip() + "\t")))
     ) or not is_valid_config_file(file):
@@ -64,9 +85,9 @@ def get_config_filename(
         else:
             print(
                 term.orangered(
-                    f"Error: File {file} is not valid config file. Check file contents."
+                    f"Error: File {file} is not a valid config file. Check file contents."
                 ),
-                term.orange("Possibly rename file with shorter filename?")
+                term.orange("Possibly rename file with a shorter filename?")
                 if len(file) > 10
                 else "",
             )

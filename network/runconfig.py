@@ -15,13 +15,13 @@ def run_configurations(
     new_site: SiteConfiguration,
     shell: PopenSpawn,
 ) -> NoReturn:
-    """Using a `SiteConfiguration` object which holds all the config commands for each access point for a site, this function establishes a serial connection that can be reused for each access point. It automatically loops through each config, waiting for prompts from the access point's console before executing the configuration commands and printin out the environment variables for confirmation on each access point. Includes minor error handling.
-
+    """
+    Using a `SiteConfiguration` object which holds all the config commands for each access point for a site, this function establishes a serial connection that can be reused for each access point. It automatically loops through each config, waiting for prompts from the access point's console before executing the configuration commands and printing out the environment variables for confirmation on each access point. Includes minor error handling.
 
     Args:
-    - args (`Namespace`): Arguments (from command-line or manual input)
-    - new_site (`SiteConfiguration`): Object holding all config commands for the site APs being configured
-    - shell (`PopenSpawn`): Shell process connecting to access point console using PuTTY Link (`plink`)
+        args (Namespace): Arguments (from command-line or manual input).
+        new_site (SiteConfiguration): Object holding all config commands for the site APs being configured.
+        shell (PopenSpawn): Shell process connecting to access point console using PuTTY Link (`plink`).
     """
     try:
         found = False
@@ -54,6 +54,6 @@ def run_configurations(
         exit()
     except Exception:
         sleep(1)
-        print("\n\nError ocurred. Exiting program...\n\n")
+        print("\n\nError occurred. Exiting program...\n\n")
     except KeyboardInterrupt:
         print("\n\nProgram interrupted from keyboard. Exiting...")
