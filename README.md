@@ -9,6 +9,9 @@
 - [About this module](#about-this-module)
   - [Available functionality](#available-functionality)
 - [Using `network-tools`](#using-network-tools)
+  - [Provisioning access points](#provisioning-access-points)
+  - [Checking for config gaps](#checking-for-config-gaps)
+  - [Experimenting with Python](#experimenting-with-python)
 
 
 ## Requirements
@@ -81,8 +84,13 @@ Currently, all the *checked* functions are available with ***network-tools***:
 1. Open a terminal in the `network-tools-main` folder.
 2. Run `python main.py`
 
+Open each dropdown to get information on that specific function.
+
 <details open>
-<summary><h3>Provisioning access points</h3></summary>
+<summary>
+
+### Provisioning access points
+</summary>
 To provision access points, you will need:
 
 - A valid config file
@@ -94,7 +102,10 @@ When you run `main.py`, choose option 1 and follow the prompts.
 </details>
 
 <details>
-    <summary><h3>Checking for config gaps</summary>
+<summary>
+
+### Checking for config gaps
+</summary>
 
 To check for gaps in a config file, all you need is the path to the file to be checked.
 
@@ -102,7 +113,10 @@ Run `main.py`, choose option 2, and follow the prompts.
 </details>
 
 <details>
-    <summary><h3>Experimenting with Python</summary>
+<summary>
+
+### Experimenting with Python
+</summary>
 
 When you provision access points using `network-tools`, a [`SiteConfiguration`](https://github.com/theSaviKing/network-tools/blob/d2b626c3c166832a68875db1b763d1f75f89babf/network/site_config.py#L21-L108) object is created. During creation, the specified config file gets parsed and every block of config commands is broken down, split up into a list, and then added to a bigger list with all of the other config blocks. From there, the bigger list is looped during execution and each individual command is fed to the terminal on the access point by way of serial connection.
 
