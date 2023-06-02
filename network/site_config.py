@@ -20,6 +20,7 @@ class Config:
         """
         self.identifier = identifier
         self.commands = commands
+        self.env = self.set_env()
 
     def __str__(self):
         """
@@ -29,6 +30,13 @@ class Config:
             str: The string representation of the Config object.
         """
         return f"Config(AP #{self.identifier}, commands: ['{self.commands[0]}', ...])"
+
+    def set_env(self):
+        return {
+            command[1]: command[2]
+            for command in (c.split() for c in self.commands)
+            if command[0] == "setenv"
+        }
 
 
 class SiteConfiguration:
