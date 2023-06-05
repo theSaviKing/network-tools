@@ -17,6 +17,8 @@ choices = [
     "Provision access points",
     "Check for gaps in config file",
     "Experiment with SiteConfiguration object from file",
+    "Generate AP SN/MAC spreadsheet template",
+    "Merge fragmented spreadsheets",
 ]
 
 
@@ -70,7 +72,7 @@ def experiment():
 if __name__ == "__main__":
     while True:
         with suppress(BaseException):
-            match prompt_args():
+            match (choice := prompt_args()):
                 case 0:
                     from network import provision
 
@@ -79,11 +81,22 @@ if __name__ == "__main__":
                     config_file_check()
                 case 2:
                     experiment()
+                case 3 | 4:
+                    from network.spreadsheet import (
+                        generate_spreadsheet_template,
+                        merge_spreadsheets,
+                    )
+
+                    if choice == 3:
+                        generate_spreadsheet_template()
+                    else:
+                        merge_spreadsheets()
                 case _:
                     break
         with suppress(ValueError):
             print(
-                "\n\nContinue? ('q' to quit program, anything else to return):  ",
+                term.clear_eos
+                + "\n\nContinue? ('q' to quit program, anything else to return):  ",
                 end="",
             )
             with term.cbreak():
