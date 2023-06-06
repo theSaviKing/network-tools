@@ -12,6 +12,8 @@
   - [Provisioning access points](#provisioning-access-points)
   - [Checking for config gaps](#checking-for-config-gaps)
   - [Experimenting with Python](#experimenting-with-python)
+  - [Generating SN/MAC spreadsheet template](#generating-snmac-spreadsheet-template)
+  - [Merging spreadsheets](#merging-spreadsheets)
 
 
 ## Requirements
@@ -121,4 +123,22 @@ Run `main.py`, choose option 2, and follow the prompts.
 When you provision access points using `network-tools`, a [`SiteConfiguration`](https://github.com/theSaviKing/network-tools/blob/d2b626c3c166832a68875db1b763d1f75f89babf/network/site_config.py#L21-L108) object is created. During creation, the specified config file gets parsed and every block of config commands is broken down, split up into a list, and then added to a bigger list with all of the other config blocks. From there, the bigger list is looped during execution and each individual command is fed to the terminal on the access point by way of serial connection.
 
 To experiment with a `SiteConfiguration` object and its methods, choose option 3, and follow the prompts to access an interactive Python terminal with a pre-loaded object.
+</details>
+
+<details>
+<summary>
+
+### Generating SN/MAC spreadsheet template
+</summary>
+
+To generate a spreadsheet template for scanning in serial numbers and MAC addresses for wireless access points, you just need a config file. Run `main.py`, choose option 4, and then enter the name of the config file and the filename you want the newly generated Excel file to be saved to (without the `.xlsx` extension on the end which is automatically added).
+</details>
+
+<details>
+<summary>
+
+### Merging spreadsheets
+</summary>
+
+If you have multiple fragmented SN/MAC spreadsheets, you can input the filename of each fragment of the spreadsheet. From there, this function will combine and order them by the "AP Name" column. Run `main.py`, choose option 5, and enter the fragment filenames.
 </details>

@@ -15,7 +15,8 @@ def generate_spreadsheet_template():
     and generates a spreadsheet template with columns for access point name, serial number (SN),
     MAC address, and IP address. The template is saved as an Excel file.
 
-    Note: The function relies on the `pandas` library for generating and manipulating the spreadsheet.
+    Note:
+        This function relies on the `pandas` library for generating and manipulating the spreadsheet.
     """
     site = SiteConfiguration(
         get_config_filename("Enter config file to generate spreadsheet for:  ")
@@ -56,6 +57,17 @@ def generate_spreadsheet_template():
 
 
 def merge_spreadsheets():
+    """
+    Merges multiple spreadsheet fragments into a single spreadsheet.
+
+    This function prompts the user to enter the file paths of each spreadsheet fragment,
+    validates the fragments, merges them into a single spreadsheet, and saves the merged
+    spreadsheet as an Excel file.
+
+    Note:
+        This function relies on the `pandas` library for reading, merging, and manipulating the spreadsheets.
+    """
+
     def error_print(text):
         print(term.clear_eol + text + term.move_up + term.move_x(0), end="")
 
