@@ -5,9 +5,9 @@ try:
     from contextlib import suppress
     from blessed import Terminal
     from network.__utils__ import clear_screen
-except ModuleNotFoundError:
+except ModuleNotFoundError as e:
     print(
-        "\nYou do not have some of the required modules to run this program. Please install them using this command:  pip install -r requirements.txt\n"
+        f"\nYou do not have some of the required modules to run this program. Please install them using this command:  pip install -r requirements.txt\n\nException:{e}"
     )
     exit()
 
