@@ -1,5 +1,5 @@
 import os
-from blessed import Terminal
+from blessed.win_terminal import Terminal
 from functools import cache
 from network.site_config import SiteConfiguration
 

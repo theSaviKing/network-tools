@@ -3,7 +3,7 @@
 try:
     import consolemenu
     from contextlib import suppress
-    from blessed import Terminal
+    from blessed.win_terminal import Terminal
     from network.__utils__ import clear_screen
 except ModuleNotFoundError as e:
     print(

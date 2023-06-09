@@ -2,7 +2,7 @@ import pandas as pd
 from .site_config import SiteConfiguration
 from .__utils__ import get_config_filename
 from os.path import isfile
-from blessed import Terminal
+from blessed.win_terminal import Terminal
 
 term = Terminal()
 

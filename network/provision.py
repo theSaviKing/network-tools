@@ -1,4 +1,4 @@
-from blessed import Terminal
+from blessed.win_terminal import Terminal
 import argparse
 
 from network.__utils__ import get_config_filename
