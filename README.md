@@ -76,8 +76,8 @@ Currently, all the *checked* functions are available with ***network-tools***:
 - [x] Provisioning access points
 - [x] Checking for gaps in config files
 - [x] Experimenting with a Python object holding a config file
-- [ ] Generating AP SN/MAC spreadsheet template
-- [ ] Merge fragmented SN/MAC spreadsheets
+- [x] Generating AP SN/MAC spreadsheet template
+- [x] Merge fragmented SN/MAC spreadsheets
 
 ---
 
