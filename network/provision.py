@@ -3,7 +3,7 @@ import argparse
 
 from network.__utils__ import get_config_filename
 from .devices import filter_devices
-from .runconfig import run_configurations
+from .run_config import run_configurations
 from .site_config import SiteConfiguration
 
 term = Terminal()
