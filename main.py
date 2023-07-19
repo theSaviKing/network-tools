@@ -19,6 +19,7 @@ choices = [
     "Experiment with SiteConfiguration object from file",
     "Generate AP SN/MAC spreadsheet template",
     "Merge fragmented spreadsheets",
+    "Wipe a Cisco ASA Firewall",
 ]
 
 
@@ -91,6 +92,10 @@ if __name__ == "__main__":
                         generate_spreadsheet_template()
                     else:
                         merge_spreadsheets()
+                case 5:
+                    from network import asa_wipe
+
+                    asa_wipe.main()
                 case _:
                     break
         with suppress(ValueError):

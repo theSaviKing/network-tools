@@ -88,7 +88,7 @@ def merge_spreadsheets():
             print(term.move_up + term.move_x(0) + "├")
             fragments.append(file)
             count += 1
-    print(term.move_up(2) + "└\n" + term.clear_eol)
+    print((term.move_up(2) + "└\n" + term.clear_eol) if len(fragments) else "")
 
     def load_spreadsheet(filepath):
         return pd.read_excel(filepath)

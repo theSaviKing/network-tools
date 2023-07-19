@@ -3,7 +3,6 @@ from typing import NoReturn
 from deepdiff import DeepDiff as DD
 from datetime import datetime
 from blessed.win_terminal import Terminal
-from .__utils__ import clear_screen
 
 term = Terminal()
 
@@ -44,6 +43,9 @@ def filter_devices():
             val = match2[2].strip().lower()
             output[device][key] = val
     return output
+
+
+from .__utils__ import clear_screen
 
 
 def watch(limit: int = 0) -> NoReturn:

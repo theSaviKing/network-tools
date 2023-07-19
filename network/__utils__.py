@@ -93,3 +93,25 @@ def get_config_filename(
             )
     print(term.clear_eos)
     return file
+
+
+from network.devices import filter_devices
+
+
+def get_usb_port():
+    """
+    Prompt the user to enter the name of the port with the desired USB connection and validate its existence.
+
+    Returns:
+        str: The name of the USB port.
+    """
+    while (port := input("Enter name of port with USB connection to APs:\t\t")) not in (
+        devs := filter_devices()
+    ):
+        print(
+            term.orangered(
+                "Error: Port does not exist or is not currently active. Check USB."
+            ),
+            term.orange(f"Available ports: {list(devs.keys())}"),
+        )
+    return port

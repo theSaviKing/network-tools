@@ -1,1 +1,6 @@
-creds*
+!network/
+!main.py
+!README.md
+!requirements.txt
+!.gitignore
+!pics/

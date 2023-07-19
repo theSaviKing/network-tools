@@ -1,31 +1,11 @@
 from blessed.win_terminal import Terminal
 import argparse
 
-from network.__utils__ import get_config_filename
-from .devices import filter_devices
+from network.__utils__ import get_config_filename, get_usb_port
 from .run_config import run_configurations
 from .site_config import SiteConfiguration
 
 term = Terminal()
-
-
-def get_usb_port():
-    """
-    Prompt the user to enter the name of the port with USB connection to APs and validate its existence.
-
-    Returns:
-        str: The name of the USB port.
-    """
-    while (port := input("Enter name of port with USB connection to APs:\t\t")) not in (
-        devs := filter_devices()
-    ):
-        print(
-            term.orangered(
-                "Error: Port does not exist or is not currently active. Check USB."
-            ),
-            term.orange(f"Available ports: {list(devs.keys())}"),
-        )
-    return port
 
 
 def input_arguments():
