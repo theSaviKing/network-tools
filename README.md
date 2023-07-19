@@ -32,7 +32,7 @@ Python 3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
-If you get an error and you know Python was installed on your machine, try restarting it.
+If you get an error and you know Python was installed on your machine, try restarting your computer.
 
 ### Installing `network-tools`
 To install the network-tools package, follow these steps:
@@ -66,6 +66,7 @@ network-tools-main/
 │   ├── provision.py
 │   ├── range_string.py
 │   ├── runconfig.py
+│   ├── spreadsheet.py
 │   └── site_config.py
 └── pics/
     └── (images for README.md file)
@@ -76,8 +77,8 @@ Currently, all the *checked* functions are available with ***network-tools***:
 - [x] Provisioning access points
 - [x] Checking for gaps in config files
 - [x] Experimenting with a Python object holding a config file
-- [ ] Generating AP SN/MAC spreadsheet template
-- [ ] Merge fragmented SN/MAC spreadsheets
+- [x] Generating AP SN/MAC spreadsheet template
+- [x] Merge fragmented SN/MAC spreadsheets
 
 ---
 
