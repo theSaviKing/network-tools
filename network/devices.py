@@ -2,7 +2,7 @@ import subprocess, re
 from typing import NoReturn
 from deepdiff import DeepDiff as DD
 from datetime import datetime
-from blessed import Terminal
+from blessed.win_terminal import Terminal
 from .__utils__ import clear_screen
 
 term = Terminal()
