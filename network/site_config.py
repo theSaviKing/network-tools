@@ -1,7 +1,7 @@
 """Contains classes for parsing access point configuration files"""
 
 import os
-from . import range_string
+from .range_string import generate_range_string
 
 
 class Config:
@@ -119,7 +119,7 @@ class SiteConfiguration:
             str: Readable string of AP config ranges OR readable string of gaps in AP config
             tuple: (String of included APs, string of excluded APs)
         """
-        rs = range_string.generate_range_string(self.get_config_list(), True)
+        rs = generate_range_string(self.get_config_list(), True)
         if with_range and with_gaps:
             return rs
         elif with_range:
@@ -157,3 +157,20 @@ class SiteConfiguration:
         if current_identifier is not None:
             config = Config(current_identifier, current_commands)
             self.configs.append(config)
+
+
+def experiment():
+    from .__utils__ import get_config_filename, clear_screen
+    import code
+
+    def console_exit():
+        raise SystemExit
+
+    config = SiteConfiguration(get_config_filename("Enter name of config file:"))
+    clear_screen()
+    banner = f"""This interactive Python terminal will allow you to experiment with a SiteConfiguration object.\n\nThe object has been generated from the file you chose:\n\t{config.filepath}\nand you can access the methods/functions and attributes for that object using the 'config' variable.\n\nFor help on how to interact with object, use help(config).\n\nTo exit the interactive terminal, use exit()."""
+    exitmsg = """"""
+    shell = code.InteractiveConsole(
+        {**globals(), **locals(), "config": config, "exit": console_exit}
+    )
+    shell.interact(banner=banner, exitmsg=exitmsg)
