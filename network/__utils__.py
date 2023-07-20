@@ -2,8 +2,11 @@
 A series of useful functions for the network-tools package
 """
 import os
+from typing import List, Optional
 from blessed.win_terminal import Terminal
 from functools import cache
+
+import readchar
 from network.site_config import SiteConfiguration
 
 term = Terminal()
@@ -150,3 +153,94 @@ def config_file_check():
                 " ",
             ]
         clear_screen()
+
+
+###
+#   THE FOLLOWING CODE IS ADAPTED FROM THE cutie PACKAGE BY kamik423 (License: MIT) -- `pip install cutie`
+###
+
+
+class DefaultKeys:
+    """** ADAPTED FROM [cutie](https://github.com/kamik423/cutie) by [kamik423](https://github.com/kamik423)
+
+    List of default keybindings.
+
+    Attributes:
+        interrupt(List[str]): Keys that cause a keyboard interrupt.
+        select(List[str]): Keys that trigger list element selection.
+        confirm(List[str]): Keys that trigger list confirmation.
+        delete(List[str]): Keys that trigger character deletion.
+        down(List[str]): Keys that select the element below.
+        up(List[str]): Keys that select the element above.
+    """
+
+    interrupt: List[str] = [readchar.key.CTRL_C, readchar.key.CTRL_D]
+    select: List[str] = [readchar.key.SPACE]
+    confirm: List[str] = [readchar.key.ENTER]
+    delete: List[str] = [readchar.key.BACKSPACE]
+    down: List[str] = [readchar.key.DOWN, "j"]
+    up: List[str] = [readchar.key.UP, "k"]
+    numbers: List[str] = [str(n) for n in range(1, 10)]
+
+
+def select(
+    options: List[str],
+    caption_indices: Optional[List[int]] = None,
+    deselected_prefix: str = "\033[1m[ ]\033[0m ",
+    selected_prefix: str = "\033[1m[\033[32;1mx\033[0;1m]\033[0m ",
+    caption_prefix: str = "",
+    selected_index: int = 0,
+    confirm_on_select: bool = True,
+) -> int:
+    """** ADAPTED FROM [cutie](https://github.com/kamik423/cutie) by [kamik423](https://github.com/kamik423)
+
+    Select an option from a list.
+
+    Args:
+        options (List[str]): The options to select from.
+        caption_indices (List[int], optional): Non-selectable indices.
+        deselected_prefix (str, optional): Prefix for deselected option ([ ]).
+        selected_prefix (str, optional): Prefix for selected option ([x]).
+        caption_prefix (str, optional): Prefix for captions ().
+        selected_index (int, optional): The index to be selected at first.
+        confirm_on_select (bool, optional): Select keys also confirm.
+
+    Returns:
+        int: The index that has been selected.
+    """
+    print("\n" * (len(options) - 1))
+    if caption_indices is None:
+        caption_indices = []
+
+    def get_new_index(direction):
+        new_index = selected_index + direction
+        while (
+            new_index >= 0 and new_index < len(options) and new_index in caption_indices
+        ):
+            new_index += direction
+        return new_index
+
+    while True:
+        print(f"\033[{len(options) + 1}A")
+        for i, option in enumerate(options):
+            if i not in caption_indices:
+                prefix = selected_prefix if i == selected_index else deselected_prefix
+                print(f"\033[K{prefix}{option}")
+            else:
+                print(f"\033[K{caption_prefix}{option}")
+        keypress = readchar.readkey()
+
+        if keypress in DefaultKeys.up:
+            selected_index = get_new_index(-1)
+        elif keypress in DefaultKeys.down:
+            selected_index = get_new_index(1)
+        elif keypress in DefaultKeys.confirm or (
+            confirm_on_select and keypress in DefaultKeys.select
+        ):
+            break
+        elif keypress in DefaultKeys.numbers and int(keypress) < len(options):
+            selected_index = int(keypress) - 1
+        elif keypress in DefaultKeys.interrupt:
+            raise KeyboardInterrupt
+
+    return selected_index

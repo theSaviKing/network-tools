@@ -1,6 +1,6 @@
 """Main entry point for Network Tools"""
 
-from network.__utils__ import config_file_check
+from network.__utils__ import config_file_check, select
 from network.site_config import experiment
 
 
@@ -51,7 +51,7 @@ def prompt_args() -> int:
         "(use ↑/↓ + ENTER to select)",
         end="\n\n",
     )
-    ch = cutie.select(choices, [6], caption_prefix="    * ")
+    ch = select(choices, [6], caption_prefix="    * ")
     clear_screen()
     return ch
 
