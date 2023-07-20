@@ -14,11 +14,11 @@
   - [Experimenting with Python](#experimenting-with-python)
   - [Generating SN/MAC spreadsheet template](#generating-snmac-spreadsheet-template)
   - [Merging spreadsheets](#merging-spreadsheets)
-  - [~~*Wipe Cisco ASA Firewalls*~~ ⌛](#wipe-cisco-asa-firewalls-)
+  - [*Wipe Cisco ASA Firewalls* ⌛](#wipe-cisco-asa-firewalls-)
 
 
 ## Requirements
-A valid Python installation (options: Microsoft Store, [Python website](https://www.python.org/downloads/))
+A valid Python installation (version 3.11+) (options: Microsoft Store, [Python website](https://www.python.org/downloads/))
 
 ## Getting started
 
@@ -92,6 +92,8 @@ Currently, all the *checked* functions are available with ***network-tools***:
 
 Open each dropdown to get information on that specific function.
 
+**NOTE:** To get the most out of included documentation for each function, consider using *Visual Studio Code* or another reputable integrated development environment (IDE) which offers hints based on documentation within files.
+
 <details open>
 <summary>
 
@@ -147,4 +149,4 @@ To generate a spreadsheet template for scanning in serial numbers and MAC addres
 If you have multiple fragmented SN/MAC spreadsheets, you can input the filename of each fragment of the spreadsheet. From there, this function will combine and order them by the "AP Name" column. Run `main.py`, choose option 5, and enter the fragment filenames.
 </details>
 
-### ~~*Wipe Cisco ASA Firewalls*~~ &#8987;
+### *Wipe Cisco ASA Firewalls* &#8987;
