@@ -1,3 +1,6 @@
+"""
+A series of useful functions for the network-tools package
+"""
 import os
 from blessed.win_terminal import Terminal
 from functools import cache
@@ -108,10 +111,42 @@ def get_usb_port():
     while (port := input("Enter name of port with USB connection to APs:\t\t")) not in (
         devs := filter_devices()
     ):
+        lines = 2
+        print(term.clear_eos, end="")
+        if port != "":
+            print(
+                term.orangered(
+                    "Error: Port does not exist or is not currently active. Check USB."
+                )
+            )
+            lines += 1
         print(
-            term.orangered(
-                "Error: Port does not exist or is not currently active. Check USB."
-            ),
             term.orange(f"Available ports: {list(devs.keys())}"),
         )
+        if valid := [dev for dev in devs.keys() if dev not in ["com3", "con"]]:
+            print(term.coral(f"Suggested port: {valid[0]}"))
+            lines += 1
+        print(term.move_up(lines), term.clear_eol, end="", sep="")
+    print(term.clear_eos, end="")
     return port
+
+
+def config_file_check():
+    from network.site_config import SiteConfiguration
+
+    cont = True
+    while cont:
+        config = SiteConfiguration(get_config_filename("Enter name of config file:"))
+        rng, gaps = config.get_range_string(True, True)
+        print(f"\nIncluded configs:\t{rng}\nGaps in configs:\t{gaps or 'None'}")
+        with term.cbreak():
+            print("\n\nCheck another file? [y/N]:  ", end="", flush=True)
+            cont = (key := str(term.inkey()).lower()) not in [
+                "n",
+                "no",
+                "\r",
+                "\n",
+                "",
+                " ",
+            ]
+        clear_screen()
