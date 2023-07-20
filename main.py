@@ -39,7 +39,7 @@ choices = [
 def prompt_args() -> int:
     clear_screen()
     print(
-        term.bold_crimson("\nWelcome to the Network Tools utility!"),
+        term.bold_chartreuse("\nWelcome to the Network Tools utility!"),
         "\tUse any of these tools to assist in working with network equipment.",
         term.coral("\tTo exit any of the tools during execution, ")
         + term.bold_coral("use Ctrl+C."),
