@@ -47,7 +47,7 @@ class SiteConfiguration:
     It allows loading configuration data from a file and provides methods to access and manipulate the configurations.
 
     Args:
-        filename (str): The name of the file containing the site configuration.
+        filepath (str): The name of the file containing the site configuration.
 
     Attributes:
         configs (list): A list of `Config` objects representing the configurations for each access point.
